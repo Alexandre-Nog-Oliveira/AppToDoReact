@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Todo from "./components/Todo"
 import Forms from './components/Forms'
+import Filter from './components/Filter'
 
 import './App.css'
 
@@ -56,12 +57,14 @@ function App() {
   return (
     <div className='app' >
       <h1>Lista de tarefas</h1>
+      <Forms AddToDo={AddToDo}/>
+      <h2>Minhas tarefas</h2>
+      <Filter/>
       <div className='Todo-List'>
       {todos.map((todo) => (
         <Todo key={todo.id} todo={todo} removeToDo={removeToDo} completeToDo={completeToDo} />
       ))}
       </div>
-      <Forms AddToDo={AddToDo}/>
     </div>
   )
 }
