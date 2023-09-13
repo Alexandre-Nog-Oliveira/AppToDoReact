@@ -1,19 +1,14 @@
-const Filter = () => {
+const Filter = ({filter, setFilter}) => {
   return (
     <div className="filter" >
-        <h3>Filtrar:</h3>
+        <h3>Filtrar</h3>
         <div className="filter-options">
             <p>Status:</p>
-            <select>
+            <select value={filter} onChange={(e) => setFilter(e.target.value)}>
                 <option value="All">Todas</option>
                 <option value="Completed">Completas</option>
                 <option value="Incompleted">Incompletas</option>
             </select>
-        </div>
-        <div>
-            <p>Ordem alfabetica</p>
-            <button>Asc</button>
-            <button>Desc</button>
         </div>
     </div>
   )

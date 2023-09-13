@@ -29,6 +29,10 @@ function App() {
     }
   ])
 
+
+  const [filter, setFilter] = useState("All")
+
+
   const AddToDo = (text, category) => {
     const newToDo = [...todos, {
       id: Math.floor(Math.random() * 10000),
@@ -59,9 +63,11 @@ function App() {
       <h1>Lista de tarefas</h1>
       <Forms AddToDo={AddToDo}/>
       <h2>Minhas tarefas</h2>
-      <Filter/>
+      <Filter filter={filter} setFilter={setFilter}/>
       <div className='Todo-List'>
-      {todos.map((todo) => (
+      {todos
+      .filter((todo) => filter === "All" ? true : filter === "Completed" ? todo.isComplented : !todo.isComplented)
+      .map((todo) => (
         <Todo key={todo.id} todo={todo} removeToDo={removeToDo} completeToDo={completeToDo} />
       ))}
       </div>
